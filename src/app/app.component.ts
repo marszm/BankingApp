@@ -9,5 +9,4 @@ import {Component} from '@angular/core';
 
 export class AppComponent {
   pageTitle  = 'Welcome to BankingApp!';
-  message = 'AAAAA';
 }
