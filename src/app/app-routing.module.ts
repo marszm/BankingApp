@@ -12,12 +12,11 @@ const routes: Routes = [
   {path:'welcome/:name', component:WelcomeComponent},
   {path:'todos', component:ListTodosComponent},
   {path:'**', component:ErrorComponent}
-
 ];
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RouterModule.forRoot(routes)],
+  imports: [CommonModule,RouterModule.forRoot(routes)],
   exports:[RouterModule]
 })
 export class AppRoutingModule { }
