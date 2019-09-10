@@ -8,9 +8,10 @@ import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import { ErrorComponent } from './error/error.component';
+import { ListTodosComponent } from './list-todos/list-todos.component';
 
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent, LoginComponent, ErrorComponent],
+  declarations: [AppComponent, WelcomeComponent, LoginComponent, ErrorComponent, ListTodosComponent],
   imports: [BrowserModule, FormsModule, AppRoutingModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent]
