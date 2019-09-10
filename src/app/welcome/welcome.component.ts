@@ -7,6 +7,8 @@
 })
 export class WelcomeComponent implements OnInit {
 
+  welcomeMessage = 'welcome!!!'
+
   constructor() { }
 
   ngOnInit() {

@@ -7,9 +7,10 @@ import { LoginComponent } from './login/login.component';
 import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {RouterModule} from '@angular/router';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
-  declarations: [AppComponent, WelcomeComponent, LoginComponent],
+  declarations: [AppComponent, WelcomeComponent, LoginComponent, ErrorComponent],
   imports: [BrowserModule, FormsModule, AppRoutingModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent]
