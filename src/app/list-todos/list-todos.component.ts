@@ -7,12 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListTodosComponent implements OnInit {
 
-  todo = {
 
-    id : 1,
-    description: 'learn to dance'
-
-  }
+  todos = [
+          {id : 1, description: 'aaa'},
+          {id : 2, description: 'bbb'},
+          {id : 3, description: 'cccccccc'}
+          ]
 
   constructor() { }
 
