@@ -23,4 +23,8 @@ export class AuthenticationService {
     return !(user === null)
   }
 
+  logout() {
+    sessionStorage.removeItem('authenticationUser');
+  }
+
 }
