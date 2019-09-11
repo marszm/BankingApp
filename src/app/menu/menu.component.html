@@ -4,12 +4,12 @@
       <a class="navbar-brand" href="#">ToDo APP</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a routerLink="">Home</a></li>
-      <li><a routerLink="/todos">ToDos</a></li>
+      <li><a *ngIf="authenticationService.isUserLoggedIn()" routerLink="">Home</a></li>
+      <li><a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/todos">ToDos</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a routerLink="/login"><span class="glyphicon glyphicon-user"></span>Login</a></li>
-      <li><a routerLink="/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
+      <li><a *ngIf="!authenticationService.isUserLoggedIn()" routerLink="/login"><span class="glyphicon glyphicon-user"></span>Login</a></li>
+      <li><a *ngIf="authenticationService.isUserLoggedIn()" routerLink="/logout"><span class="glyphicon glyphicon-log-in"></span>Logout</a></li>
     </ul>
   </div>
 </nav>
