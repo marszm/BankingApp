@@ -7,6 +7,7 @@ import {ErrorComponent} from './error/error.component';
 import {ListTodosComponent} from './list-todos/list-todos.component';
 import {LogoutComponent} from './logout/logout.component';
 import {RouteGuardService} from './service/route-guard.service';
+import {HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -19,7 +20,7 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule,RouterModule.forRoot(routes)],
+  imports: [CommonModule,RouterModule.forRoot(routes),HttpClientModule],
   exports:[RouterModule]
 })
 export class AppRoutingModule { }
