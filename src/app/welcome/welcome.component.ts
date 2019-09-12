@@ -13,8 +13,11 @@ export class WelcomeComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-
     this.name = this.route.snapshot.params['name'];
+  }
+
+  getWelcomeMesssage() {
 
   }
+
 }
