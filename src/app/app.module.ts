@@ -13,13 +13,15 @@ import { MenuComponent } from './menu/menu.component';
 import { FooterComponent } from './footer/footer.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TodoComponent } from './todo/todo.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpIntercepterAuthService} from './service/http/http-intercepter-auth.service';
 
 
 
 @NgModule({
   declarations: [AppComponent, WelcomeComponent, LoginComponent, ErrorComponent, ListTodosComponent, MenuComponent, FooterComponent, LogoutComponent, TodoComponent],
   imports: [BrowserModule, FormsModule, AppRoutingModule, RouterModule],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterAuthService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
