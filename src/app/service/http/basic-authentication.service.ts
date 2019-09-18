@@ -1,58 +1,80 @@
+import { API_URL } from '../../app.constants';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {map} from 'rxjs/operators';
-import {API_URL} from '../../app.constants';
+
+export const TOKEN = 'token'
+export const AUTHENTICATED_USER = 'authenticaterUser'
 
 @Injectable({
   providedIn: 'root'
 })
 export class BasicAuthenticationService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  exexuteAuthenticationService(username, password) {
+  executeJWTAuthenticationService(username, password) {
 
-    let basicAuthHeaderString ='basic'+window.btoa(username+':'+password);
+    return this.http.post<any>(
+      `${API_URL}/authenticate`,{
+        username,
+        password
+      }).pipe(
+      map(
+        data => {
+          sessionStorage.setItem(AUTHENTICATED_USER, username);
+          sessionStorage.setItem(TOKEN, `Bearer ${data.token}`);
+          return data;
+        }
+      )
+    );
+    //console.log("Execute Hello World Bean Service")
+  }
+
+
+  executeAuthenticationService(username, password) {
+
+    let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+
     let headers = new HttpHeaders({
-      Authorization :basicAuthHeaderString
-    });
+      Authorization: basicAuthHeaderString
+    })
 
     return this.http.get<AuthenticationBean>(
       `${API_URL}/basicauth`,
       {headers}).pipe(
-        map(
-          data => {
-            sessionStorage.setItem('authenticationUser',username);
-            sessionStorage.setItem('token',basicAuthHeaderString);
-            return data;
-          }
-        )
+      map(
+        data => {
+          sessionStorage.setItem(AUTHENTICATED_USER, username);
+          sessionStorage.setItem(TOKEN, basicAuthHeaderString);
+          return data;
+        }
+      )
     );
-  }
-
-  getAuthenticatedToken() {
-    if(this.getAuthenticatedToken())
-    return sessionStorage.getItem('token');
+    //console.log("Execute Hello World Bean Service")
   }
 
   getAuthenticatedUser() {
-    return sessionStorage.getItem('authenticationUser');
+    return sessionStorage.getItem(AUTHENTICATED_USER)
+  }
+
+  getAuthenticatedToken() {
+    if(this.getAuthenticatedUser())
+      return sessionStorage.getItem(TOKEN)
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('authenticationUser');
+    let user = sessionStorage.getItem(AUTHENTICATED_USER)
     return !(user === null)
   }
 
-  logout() {
-    sessionStorage.removeItem('authenticationUser');
-    sessionStorage.removeItem('token');
+  logout(){
+    sessionStorage.removeItem(AUTHENTICATED_USER)
+    sessionStorage.removeItem(TOKEN)
   }
 
 }
-export class AuthenticationBean {
 
-
-  constructor(public message: string) {
-  }
+export class AuthenticationBean{
+  constructor(public message:string) { }
 }
