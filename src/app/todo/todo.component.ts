@@ -22,8 +22,8 @@ export class TodoComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.todo = new Todo(this.id,'',false, new Date());
 
-    if(this.id != -1) {
-      this.toDoDataService.retriveToDo('admin', this.id).subscribe(
+    if(this.id !== -1) {
+      this.toDoDataService.retriveToDo('in28minutes', this.id).subscribe(
         data => this.todo = data
       )
     }
@@ -31,13 +31,13 @@ export class TodoComponent implements OnInit {
 
   saveToDo() {
     if(this.id === -1) {
-      this.toDoDataService.createToDo('admin', this.todo).subscribe(
+      this.toDoDataService.createToDo('in28minutes', this.todo).subscribe(
         date => {
           this.router.navigate(['todos'])
         }
       );
     } else {
-      this.toDoDataService.updateToDo('admin', this.id, this.todo).subscribe(
+      this.toDoDataService.updateToDo('in28minutes', this.id, this.todo).subscribe(
         date => {
           this.router.navigate(['todos'])
         }

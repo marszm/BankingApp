@@ -7,5 +7,5 @@ import {Component} from '@angular/core';
 })
 
 export class AppComponent {
-  pageTitle  = 'Welcome to BankingApp!';
+  pageTitle  = 'Welcome to ToDoApp!!!';
 }

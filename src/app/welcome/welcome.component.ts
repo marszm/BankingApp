@@ -9,8 +9,8 @@
 })
 export class WelcomeComponent implements OnInit {
 
-  welcomeMessageFromService: string
-  name = ''
+  welcomeMessageFromService: string;
+  name = '';
   constructor(private route: ActivatedRoute,
               private service: WelcomeDataService) { }
 
@@ -20,13 +20,13 @@ export class WelcomeComponent implements OnInit {
 
   getWelcomeMesssage() {
     this.service.exexuteHelloWorldBeanService().subscribe(
-      ressponse => this.handleSuccessfulRespons(ressponse),
+      response => this.handleSuccessfulRespons(response),
           error => this.handleErrorRespons(error));
   }
 
   getWelcomeMesssageWithParameter() {
     this.service.exexuteHelloWorldBeanServicePathVariable(this.name).subscribe(
-      ressponse => this.handleSuccessfulRespons(ressponse),
+      response => this.handleSuccessfulRespons(response),
       error => this.handleErrorRespons(error));
   }
 

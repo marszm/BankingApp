@@ -21,9 +21,9 @@ export class Todo {
 export class ListTodosComponent implements OnInit {
 
 
-  todos: Todo[]
+  todos: Todo[];
 
-  message : string
+  message : string;
 
   constructor(private todoService: TodoDataService,
               private router: Router) { }
@@ -33,7 +33,7 @@ export class ListTodosComponent implements OnInit {
   }
 
   refseshToDos() {
-    this.todoService.retriveAllToDos('admin').subscribe(
+    this.todoService.retriveAllToDos('in28minutes').subscribe(
       response => {
         this.todos = response
       }
@@ -41,7 +41,7 @@ export class ListTodosComponent implements OnInit {
   }
 
   deleteToDo(id) {
-    this.todoService.deleteToDo('admin', id).subscribe(
+    this.todoService.deleteToDo('in28minutes', id).subscribe(
       response => {
         this.message = `delete of ${id} pass!`;
         this.refseshToDos();
